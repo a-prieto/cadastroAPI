@@ -1,9 +1,10 @@
 package br.com.g4f.teste.alexandre.cadastroAPI.controller;
 
-import br.com.g4f.teste.alexandre.cadastroAPI.pessoa.DadosCadastroPessoa;
 import br.com.g4f.teste.alexandre.cadastroAPI.pessoa.Pessoa;
-import br.com.g4f.teste.alexandre.cadastroAPI.repository.PessoaRepository;
+import br.com.g4f.teste.alexandre.cadastroAPI.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,17 +14,19 @@ import java.util.List;
 
 public class PessoaController {
     @Autowired
-    private PessoaRepository pessoaRepository;
+    private PessoaService pessoaService;
 
     @PostMapping
-    public Pessoa cadastrarPessoa (@RequestBody Pessoa pessoa){
-        return pessoaRepository.save(pessoa);
-
+    public ResponseEntity<?> cadastrarPessoa (@RequestBody Pessoa pessoa){
+        pessoaService.cadastrarPessoa(pessoa);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
-    public List<Pessoa> listaPessoas(){
-        return pessoaRepository.findAll();
+    public ResponseEntity<?> listaPessoas(){
+        List<Pessoa> listaDePessoas = pessoaService.listarPessoas();
+        return ResponseEntity.status(HttpStatus.OK).body(listaDePessoas);
+
     }
 
 }

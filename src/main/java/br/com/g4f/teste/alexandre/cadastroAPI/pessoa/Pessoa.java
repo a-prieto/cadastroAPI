@@ -2,6 +2,8 @@ package br.com.g4f.teste.alexandre.cadastroAPI.pessoa;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "tb-pessoa")
 public class Pessoa {
@@ -12,9 +14,12 @@ public class Pessoa {
 
     private String nome;
     private String cpf;
-    private String dia;
-    private String mes;
-    private String ano;
+    private LocalDate diaNascimento;
+    private String mesNascimento;
+    private String anoNascimento;
+
+    public Pessoa() {
+    }
 
     public String getNome() {
         return nome;
@@ -24,15 +29,15 @@ public class Pessoa {
         return cpf;
     }
 
-    public String getDia() {
-        return dia;
+    public LocalDate getDiaNascimento() {
+        return diaNascimento;
     }
 
-    public String getMes() {
-        return mes;
+    public String getMesNascimento() {
+        return mesNascimento;
     }
 
-    public String getAno() {
-        return ano;
+    public String getAnoNascimento() {
+        return anoNascimento;
     }
 }
