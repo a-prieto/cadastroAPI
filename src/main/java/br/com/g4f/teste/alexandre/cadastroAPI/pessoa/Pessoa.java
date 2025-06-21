@@ -14,11 +14,15 @@ public class Pessoa {
 
     private String nome;
     private String cpf;
-    private LocalDate diaNascimento;
-    private String mesNascimento;
-    private String anoNascimento;
+    private LocalDate nascimento;;
 
     public Pessoa() {
+    }
+
+    public Pessoa(String nome, String cpf, LocalDate nascimento) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.nascimento = nascimento;
     }
 
     public String getNome() {
@@ -30,14 +34,7 @@ public class Pessoa {
     }
 
     public LocalDate getDiaNascimento() {
-        return diaNascimento;
+        return nascimento;
     }
 
-    public String getMesNascimento() {
-        return mesNascimento;
-    }
-
-    public String getAnoNascimento() {
-        return anoNascimento;
-    }
 }
